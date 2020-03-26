@@ -115,6 +115,15 @@ export type User = {
   email?: string
 };
 
+export type PhotoConsentDomain = 'WEBSITE' | 'SOCIAL_MEDIA';
+
+export type PhotoConsent = {
+  semester: string,
+  domain: PhotoConsentDomain,
+  isConsenting: ?boolean,
+  updatedAt: ?Dateish
+};
+
 export type EventRegistrationPresence = 'PRESENT' | 'NOT_PRESENT' | 'UNKNOWN';
 export type EventRegistrationPhotoConsent =
   | 'PHOTO_NOT_CONSENT'
