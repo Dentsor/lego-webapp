@@ -7,7 +7,8 @@ import {
   fetchUser,
   addPenalty,
   deletePenalty,
-  changeGrade
+  changeGrade,
+  updatePhotoConsent
 } from 'app/actions/UserActions';
 import { fetchAllWithType } from 'app/actions/GroupActions';
 import { fetchPrevious, fetchUpcoming } from 'app/actions/EventActions';
@@ -67,6 +68,7 @@ const mapStateToProps = (state, props) => {
   const canChangeGrade = state.allowed.groups;
   const canDeletePenalties = state.allowed.penalties;
   const groups = selectGroupsWithType(state, { groupType: 'klasse' });
+
   return {
     username,
     auth: state.auth,
@@ -92,7 +94,8 @@ const mapDispatchToProps = {
   fetchUserFeed,
   addPenalty,
   deletePenalty,
-  changeGrade
+  changeGrade,
+  updatePhotoConsent
 };
 
 export default compose(
