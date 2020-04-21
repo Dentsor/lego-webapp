@@ -142,20 +142,35 @@ export class RegisteredTable extends Component<Props> {
       },
       {
         title: 'Samtykke',
-        dataIndex: 'photoConsent',
+        dataIndex: 'user.photoConsents',
         visible: !!event.useConsent,
         center: true,
-        render: consent =>
-          consent !== 'UNKNOWN' && (
-            <TooltipIcon
-              content={consent}
-              iconClass={
-                consent === 'PHOTO_CONSENT'
-                  ? cx('fa fa-check', styles.greenIcon)
-                  : cx('fa fa-times', styles.crossIcon)
-              }
-            />
-          )
+        render: consents => {
+          if (consents) {
+            console.log(consents);
+            const currentSemester = 'H19'; // For testing only | Needs to be set per event
+            const currentConsents = consents
+              .filter(c => c.semester == currentSemester)
+              .sort((a, b) => a.domain - b.domain);
+            console.log(
+              currentConsents +
+                (parseInt(currentConsents[0].domain) -
+                parseInt(currentConsents[1].domain))
+            );
+          }
+          return (
+            consents !== 'UNKNOWN' && (
+              <TooltipIcon
+                content={'consents'}
+                iconClass={
+                  consents
+                    ? cx('fa fa-check', styles.greenIcon)
+                    : cx('fa fa-times', styles.crossIcon)
+                }
+              />
+            )
+          );
+        }
       },
       {
         title: 'Klassetrinn',
