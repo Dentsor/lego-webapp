@@ -115,6 +115,7 @@ class DatePicker extends Component<Props, State> {
               .tz(this.state.value, config.timezone)
               .format(this.props.dateFormat)}
             name={name}
+            readOnly
           />
         }
         componentClass="div"
